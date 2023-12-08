@@ -1,4 +1,4 @@
-let categoriesPage = "http://localhost:8081/api/categories"
+let categoriesPage = "http://localhost:3000/categories"
 
 document.addEventListener("DOMContentLoaded", () => {
   const selects = document.getElementById("searchSelect");
@@ -17,7 +17,9 @@ function searchSelected() {
   }
 }
 function loadCategories(){
-    
+  fetch(categoriesPage)
+  .then((response)=>{return response.json();})
+  .then((data)=> {if (data) {console.log(data.name)}})
 }
 
 function displayCategories() {
@@ -29,3 +31,4 @@ function displayProducts() {
   // Your code to display products goes here
   console.log("Displaying products");
 }
+
